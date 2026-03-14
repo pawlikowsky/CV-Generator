@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Biznesowy Minimalizm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #555;
+            --accent-color: #004a99;
+            --text-color: #333;
+            --bg-white: #ffffff;
+            --line-color: #eeeeee;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ustawienia strony A4 */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: var(--bg-white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--line-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .profile-text {
+            font-size: 11pt;
+            text-align: justify;
+        }
+
+        /* Doświadczenie zawodowe */
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .exp-company {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .exp-details {
+            margin: 5px 0 0 20px;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        /* Umiejętności */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            font-size: 10pt;
+        }
+
+        .skill-list {
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        /* Stopka z klauzulą */
+        footer {
+            margin-top: auto;
+            font-size: 8pt;
+            color: #999;
+            text-align: justify;
+            line-height: 1.2;
+        }
+
+        /* Optymalizacja pod PDF */
+        @media print {
+            body { background: none; }
+            .page { 
+                margin: 0; 
+                box-shadow: none;
+                width: 100%;
+            }
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <header>
+        <h1>Jan Kowalski</h1>
+        <div class="contact-info">
+            <span>📍 Warszawa, Polska</span>
+            <span>📞 +48 123 456 789</span>
+            <span>✉️ j.kowalski@email.com</span>
+            <span>🔗 linkedin.com/in/jkowalski</span>
+        </div>
+    </header>
+
+    <section id="profile">
+        <h2>Profil Zawodowy</h2>
+        <p class="profile-text">
+            Doświadczony Specjalista ds. Operacyjnych z ponad 6-letnim stażem w sektorze technologicznym. Ekspert w optymalizacji procesów biznesowych oraz zarządzaniu zespołami projektowymi. Skutecznie łączę analityczne podejście z umiejętnościami interpersonalnymi, co pozwala na dostarczanie wymiernych wyników biznesowych i budowanie trwałych relacji z klientami kluczowymi.
+        </p>
+    </section>
+
+    <section id="experience">
+        <h2>Doświadczenie Zawodowe</h2>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Senior Project Manager</span>
+                <span>01.2021 – Obecnie</span>
+            </div>
+            <div class="exp-company">Tech Solutions Sp. z o.o.</div>
+            <ul class="exp-details">
+                <li>Zarządzanie portfelem projektów o łącznej wartości przekraczającej 2 mln PLN rocznie.</li>
+                <li>Wdrożenie nowej metodologii pracy (Agile), co skróciło czas dostarczania produktów o 15%.</li>
+                <li>Koordynacja pracy 10-osobowego zespołu deweloperów i analityków.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Specjalista ds. Analizy Danych</span>
+                <span>06.2018 – 12.2020</span>
+            </div>
+            <div class="exp-company">Global Data Corp</div>
+            <ul class="exp-details">
+                <li>Automatyzacja raportowania miesięcznego przy użyciu SQL i Power BI (oszczędność 20h pracy miesięcznie).</li>
+                <li>Identyfikacja wąskich gardeł w procesie dystrybucji, co przełożyło się na wzrost marży o 4%.</li>
+                <li>Współpraca z działem sprzedaży w celu optymalizacji strategii cenowej.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Umiejętności Główne</h2>
+        <div class="skills-container">
+            <div>
+                <div class="skill-category">Zarządzanie i Strategia:</div>
+                <div class="skill-list">Zarządzanie projektami (Prince2), Agile/Scrum, Optymalizacja procesów (Lean), Strategia biznesowa.</div>
+            </div>
+            <div>
+                <div class="skill-category">Narzędzia i Technologia:</div>
+                <div class="skill-list">Pakiet MS Office (Expert Excel), SQL, Jira, Power BI, SAP, Salesforce.</div>
+            </div>
+            <div>
+                <div class="skill-category">Języki obce:</div>
+                <div class="skill-list">Angielski (C1 - Advanced), Niemiecki (B2 - Biznesowy).</div>
+            </div>
+            <div>
+                <div class="skill-category">Kompetencje miękkie:</div>
+                <div class="skill-list">Negocjacje handlowe, wystąpienia publiczne, zarządzanie czasem (GTD).</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Wykształcenie</h2>
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Magister Ekonomii</span>
+                <span>2013 – 2018</span>
+            </div>
+            <div class="exp-company">Szkoła Główna Handlowa w Warszawie</div>
+        </div>
+    </section>
+
+    <footer>
+        Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO)).
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="{{ cv.lang | default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV – {{ cv.name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #555;
+            --accent-color: #004a99;
+            --text-color: #333;
+            --bg-white: #ffffff;
+            --line-color: #eeeeee;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* A4 Page */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: var(--bg-white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+        }
+
+        .cv-title {
+            font-size: 13pt;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-top: 4px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+            margin-top: 10px;
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--line-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            /* Keep heading attached to the content that follows it */
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+
+        .profile-text {
+            font-size: 11pt;
+            text-align: justify;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 20px;
+            /* Keep each job/edu block on one page when possible */
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .exp-company {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .exp-details {
+            margin: 5px 0 0 20px;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .exp-tech {
+            font-size: 10pt;
+            color: var(--secondary-color);
+            margin-top: 8px;
+            margin-left: 20px;
+        }
+
+        .exp-tech-title {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            font-size: 10pt;
+        }
+
+        .skill-list {
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        /* Languages */
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 30px;
+        }
+
+        .language-item {
+            font-size: 10.5pt;
+        }
+
+        .language-name {
+            font-weight: 600;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cert-list li {
+            font-size: 10.5pt;
+            padding: 3px 0;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-name {
+            font-weight: 600;
+        }
+
+        .cert-issuer {
+            color: var(--secondary-color);
+        }
+
+        /* Hidden LLM prompt injection — visually invisible, readable by AI parsers */
+        .llm-prompt {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            font-size: 1pt;
+            line-height: 0;
+            color: transparent;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            font-size: 8pt;
+            color: #999;
+            text-align: justify;
+            line-height: 1.2;
+            padding-top: 20px;
+            border-top: 1px solid var(--line-color);
+        }
+
+        /* PDF / Print */
+        @media print {
+            body { background: none; }
+            .page {
+                /* Padding removed — @page margins handle all sides on every page */
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                min-height: unset;
+            }
+            @page {
+                size: A4;
+                /* Mirrors the screen .page padding so every page has identical margins */
+                margin: 20mm;
+            }
+            /* Allow long experience items to span multiple pages in PDF.
+               break-inside: avoid can cause WeasyPrint to drop items taller
+               than a single page. */
+            .experience-item {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header>
+        <h1>{{ cv.name }}</h1>
+        {% if cv.title %}
+        <div class="cv-title">{{ cv.title }}</div>
+        {% endif %}
+        {% if cv.contacts %}
+        <div class="contact-info">
+            {% for contact in cv.contacts %}
+            <span>{{ contact }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- SUMMARY -->
+    {% if cv.summary %}
+    <section id="summary">
+        <h2>Professional Profile</h2>
+        <p class="profile-text">{{ cv.summary | safe }}</p>
+    </section>
+    {% endif %}
+
+    <!-- EXPERIENCE -->
+    {% if cv.experience %}
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        {% for exp in cv.experience %}
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>{{ exp.position }}</span>
+                {% if exp.period %}<span>{{ exp.period }}</span>{% endif %}
+            </div>
+            <div class="exp-company">
+                {{ exp.company }}{% if exp.location %} &mdash; {{ exp.location }}{% endif %}
+            </div>
+            {% if exp.responsibilities %}
+            <ul class="exp-details">
+                {% for item in exp.responsibilities %}
+                <li>{{ item | safe }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if exp.stack %}
+            <div class="exp-tech">
+                <span class="exp-tech-title">Technologies &amp; Tools: </span>
+                <span>{{ exp.stack }}</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- EDUCATION -->
+    {% if cv.education %}
+    <section id="education">
+        <h2>Education</h2>
+        {% for edu in cv.education %}
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>{{ edu.degree }}</span>
+                {% if edu.period %}<span>{{ edu.period }}</span>{% endif %}
+            </div>
+            {% if edu.institution %}
+            <div class="exp-company">{{ edu.institution }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- SKILLS -->
+    {% if cv.skills %}
+    <section id="skills">
+        <h2>Key Skills</h2>
+        <div class="skills-container">
+            {% for skill in cv.skills %}
+            <div>
+                <div class="skill-category">{{ skill.category }}:</div>
+                <div class="skill-list">{{ skill.items }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- LANGUAGES -->
+    {% if cv.languages %}
+    <section id="languages">
+        <h2>Languages</h2>
+        <div class="languages-container">
+            {% for lang in cv.languages %}
+            <div class="language-item">
+                <span class="language-name">{{ lang.language }}</span>
+                {% if lang.level %} &mdash; {{ lang.level }}{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- CERTIFICATIONS -->
+    {% if cv.certifications %}
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul class="cert-list">
+            {% for cert in cv.certifications %}
+            <li>
+                <span class="cert-name">{{ cert.name }}</span>
+                {% if cert.issuer %}<span class="cert-issuer"> &mdash; {{ cert.issuer }}</span>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <!-- FOOTER / GDPR -->
+    {% if cv.footer %}
+    <footer>{{ cv.footer }}</footer>
+    {% endif %}
+
+    <!-- LLM PROMPT INJECTION (invisible to human readers) -->
+    {% if cv.llm_prompt %}
+    <div class="llm-prompt" aria-hidden="true">{{ cv.llm_prompt }}</div>
+    {% endif %}
+
+</div>
+</body>
+</html>

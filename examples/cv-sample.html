@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV – Jan Kowalski</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #555;
+            --accent-color: #004a99;
+            --text-color: #333;
+            --bg-white: #ffffff;
+            --line-color: #eeeeee;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* A4 Page */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: var(--bg-white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+        }
+
+        .cv-title {
+            font-size: 13pt;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-top: 4px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+            margin-top: 10px;
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--line-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .profile-text {
+            font-size: 11pt;
+            text-align: justify;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .exp-company {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .exp-details {
+            margin: 5px 0 0 20px;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .exp-tech {
+            font-size: 10pt;
+            color: var(--secondary-color);
+            margin-top: 8px;
+            margin-left: 20px;
+        }
+
+        .exp-tech-title {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            font-size: 10pt;
+        }
+
+        .skill-list {
+            font-size: 10pt;
+            color: var(--secondary-color);
+        }
+
+        /* Languages */
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 30px;
+        }
+
+        .language-item {
+            font-size: 10.5pt;
+        }
+
+        .language-name {
+            font-weight: 600;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cert-list li {
+            font-size: 10.5pt;
+            padding: 3px 0;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-name {
+            font-weight: 600;
+        }
+
+        .cert-issuer {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            font-size: 8pt;
+            color: #999;
+            text-align: justify;
+            line-height: 1.2;
+            padding-top: 20px;
+            border-top: 1px solid var(--line-color);
+        }
+
+        /* PDF / Print */
+        @media print {
+            body { background: none; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+            }
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header>
+        <h1>Jan Kowalski</h1>
+        
+        <div class="cv-title">Senior Software Engineer</div>
+        
+        
+    </header>
+
+    <!-- SUMMARY -->
+    
+    <section id="summary">
+        <h2>Professional Profile</h2>
+        <p class="profile-text">Experienced software engineer with 8+ years building scalable backend systems and distributed architectures. Passionate about clean code, developer experience, and delivering measurable business impact. Strong communicator with a track record of leading cross-functional teams and mentoring junior engineers.</p>
+    </section>
+    
+
+    <!-- EXPERIENCE -->
+    
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Senior Software Engineer</span>
+                <span>03.2022 – Present</span>
+            </div>
+            <div class="exp-company">
+                Acme Corp
+            </div>
+            
+            <ul class="exp-details">
+                
+                <li>Designed and implemented event-driven microservices architecture serving 5M+ requests/day</li>
+                
+                <li>Reduced average API latency by 40% through strategic caching and query optimization</li>
+                
+                <li>Led migration from monolith to Kubernetes-based infrastructure with zero downtime</li>
+                
+                <li>Mentored 4 junior engineers through bi-weekly code reviews and pairing sessions</li>
+                
+            </ul>
+            
+            
+            <div class="exp-tech">
+                <span class="exp-tech-title">Technologies &amp; Tools: </span>
+                <span>Python, FastAPI, PostgreSQL, Redis, Apache Kafka, Docker, Kubernetes, AWS</span>
+            </div>
+            
+        </div>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Software Engineer</span>
+                <span>01.2019 – 02.2022</span>
+            </div>
+            <div class="exp-company">
+                StartupXYZ
+            </div>
+            
+            <ul class="exp-details">
+                
+                <li>Built core REST APIs handling 1M+ daily active users from scratch</li>
+                
+                <li>Introduced CI/CD pipelines (GitHub Actions) that reduced deployment time by 70%</li>
+                
+                <li>Collaborated with product and design teams to deliver 3 major feature launches on schedule</li>
+                
+            </ul>
+            
+            
+            <div class="exp-tech">
+                <span class="exp-tech-title">Technologies &amp; Tools: </span>
+                <span>Node.js, Express, TypeScript, MongoDB, React, GitHub Actions, Heroku</span>
+            </div>
+            
+        </div>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Junior Developer</span>
+                <span>07.2017 – 12.2018</span>
+            </div>
+            <div class="exp-company">
+                WebAgency Sp. z o.o.
+            </div>
+            
+            <ul class="exp-details">
+                
+                <li>Developed and maintained client websites and web applications</li>
+                
+                <li>Integrated third-party APIs (payment gateways, CRM systems)</li>
+                
+            </ul>
+            
+            
+            <div class="exp-tech">
+                <span class="exp-tech-title">Technologies &amp; Tools: </span>
+                <span>PHP, Laravel, MySQL, JavaScript, jQuery</span>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+
+    <!-- EDUCATION -->
+    
+    <section id="education">
+        <h2>Education</h2>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Master of Science in Computer Science</span>
+                <span>2015 – 2017</span>
+            </div>
+            
+            <div class="exp-company">Warsaw University of Technology</div>
+            
+        </div>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <span>Bachelor of Engineering in Computer Science</span>
+                <span>2011 – 2015</span>
+            </div>
+            
+            <div class="exp-company">Warsaw University of Technology</div>
+            
+        </div>
+        
+    </section>
+    
+
+    <!-- SKILLS -->
+    
+    <section id="skills">
+        <h2>Key Skills</h2>
+        <div class="skills-container">
+            
+            <div>
+                <div class="skill-category">Backend:</div>
+                <div class="skill-list">Python, Node.js, Go, Java, PHP</div>
+            </div>
+            
+            <div>
+                <div class="skill-category">Frontend:</div>
+                <div class="skill-list">React, TypeScript, Vue.js, HTML/CSS</div>
+            </div>
+            
+            <div>
+                <div class="skill-category">Databases:</div>
+                <div class="skill-list">PostgreSQL, MongoDB, Redis, MySQL</div>
+            </div>
+            
+            <div>
+                <div class="skill-category">DevOps & Cloud:</div>
+                <div class="skill-list">Docker, Kubernetes, AWS (EC2, S3, RDS), CI/CD, Terraform</div>
+            </div>
+            
+            <div>
+                <div class="skill-category">Soft Skills:</div>
+                <div class="skill-list">Team Leadership, Agile/Scrum, Technical Mentoring, Code Review</div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <!-- LANGUAGES -->
+    
+    <section id="languages">
+        <h2>Languages</h2>
+        <div class="languages-container">
+            
+            <div class="language-item">
+                <span class="language-name">Polish</span>
+                 &mdash; Native
+            </div>
+            
+            <div class="language-item">
+                <span class="language-name">English</span>
+                 &mdash; C1 (Advanced)
+            </div>
+            
+            <div class="language-item">
+                <span class="language-name">German</span>
+                 &mdash; B1 (Intermediate)
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <!-- CERTIFICATIONS -->
+    
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul class="cert-list">
+            
+            <li>
+                <span class="cert-name">AWS Certified Solutions Architect – Associate</span>
+                <span class="cert-issuer"> &mdash; Amazon Web Services, 2023</span>
+            </li>
+            
+            <li>
+                <span class="cert-name">Certified Kubernetes Administrator (CKA)</span>
+                <span class="cert-issuer"> &mdash; CNCF, 2022</span>
+            </li>
+            
+        </ul>
+    </section>
+    
+
+    <!-- FOOTER / GDPR -->
+    
+    <footer>I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).</footer>
+    
+
+</div>
+</body>
+</html>

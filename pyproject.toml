@@ -1,0 +1,58 @@
+[project]
+name = "cv-generator"
+version = "0.1.0"
+description = "Simple CV generator from Markdown"
+authors = [
+    {name = "Mateusz Pawlikowski",email = "mateusz.pawlikowski@pepecodes.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.13"
+dependencies = [
+    "jinja2 (>=3.1.6,<4.0.0)",
+    "markdown (>=3.10.2,<4.0.0)",
+    "ruff (>=0.15.6,<0.16.0)",
+    "weasyprint (>=68.1,<69.0)",
+    "pytest (>=9.0.2,<10.0.0)",
+    "pydantic (>=2.12.5,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# ── Ruff ──────────────────────────────────────────────────────────────────────
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+src = [".", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "RUF", # ruff-specific rules
+]
+ignore = [
+    "E501",  # line too long — handled by formatter
+    "B008",  # do not perform function calls in default arguments
+    "RUF001", # EN/EM dash in strings — intentional in CV content and test fixtures
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["generate_cv"]
+force-sort-within-sections = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
