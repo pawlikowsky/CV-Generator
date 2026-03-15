@@ -294,18 +294,14 @@
             padding-top: 6px;
         }
 
-        /* Hidden LLM prompt */
+        /* Hidden LLM prompt injection — white-on-white, selectable by Ctrl+A
+           and readable by PDF text-layer parsers / AI/ATS systems. */
         .llm-prompt {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            opacity: 0;
-            font-size: 1pt;
-            line-height: 0;
-            color: transparent;
-            user-select: none;
-            pointer-events: none;
+            color: #ffffff;
+            background: #ffffff;
+            font-size: 2pt;
+            line-height: 1;
+            display: block;
         }
 
         /* ── PDF / Print ──────────────────────────────────────────── */
