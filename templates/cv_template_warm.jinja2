@@ -39,7 +39,9 @@
             width: 210mm;
             min-height: 297mm;
             margin: 10mm auto;
-            background: var(--cream);
+            /* Sidebar background via gradient so it extends across all printed pages.
+               Plain background on .sidebar gets cut at page breaks in browser print. */
+            background: linear-gradient(to right, var(--sidebar-bg) 68mm, var(--cream) 68mm);
             box-shadow: 0 4px 24px rgba(0,0,0,0.18);
             display: flex;
             flex-direction: row;
@@ -49,7 +51,7 @@
         .sidebar {
             width: 68mm;
             min-height: 100%;
-            background: var(--sidebar-bg);
+            background: transparent;
             color: var(--text-light);
             padding: 12mm 8mm;
             display: flex;
@@ -100,10 +102,10 @@
         }
 
         .contact-list li {
-            font-size: 9pt;
+            font-size: 8pt;
             color: var(--text-light);
             padding: 2px 0;
-            word-break: break-word;
+            overflow-wrap: anywhere;
         }
 
         /* Skill bars */
